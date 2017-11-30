@@ -25,10 +25,12 @@ public class PesquisadorDicons {
 		FiltroDeArquivosPorAtendimento filtro = new FiltroDeArquivosPorAtendimento(numeroAtendimento);
 		List<Dicon> listaDicons = new ArrayList<Dicon>();
 		File[] listFiles = diconsDir.listFiles(filtro);
-		for (File file : listFiles) {
-			String cliente = file.getName().replaceAll("\\d", "");
-			String diretorio = file.getName();
-			listaDicons.add(new Dicon(numeroAtendimento, cliente, diretorio));
+		if (listFiles != null ) {
+			for (File file : listFiles) {
+				String cliente = file.getName().replaceAll("\\d", "");
+				String diretorio = file.getName();
+				listaDicons.add(new Dicon(numeroAtendimento, cliente, diretorio));
+			}
 		}
 		return listaDicons;
 	}
